@@ -56,4 +56,9 @@ public class Usuario extends Pessoa implements Serializable{
             System.out.println(emp.imprime());
         }
     }
+
+    public void consulta(){
+        System.out.println("--------------------\n"+nome+"\n--------------------\nCodigo: "+codigoUsuario+"\nEndereco: "+endereco+"\nNascimento: "+Converte.imprimeGCalendar(dataNasc)+"\n\n");
+        imprimeHist();
+    }
 }

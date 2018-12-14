@@ -17,6 +17,11 @@ public class EmprestadoPara implements Serializable{
     public int getCodigo(){
         return codigoUsuario;
     }
+
+    public String imprime(){
+        return codigoUsuario+"   "+Converte.imprimeGCalendar(emprestimo)+"   "+Converte.imprimeGCalendar(devolucao);
+    }
+
 }
 
 // A classe EmprestadoPara deve conter a data do empréstimo, data de devolução e o código do

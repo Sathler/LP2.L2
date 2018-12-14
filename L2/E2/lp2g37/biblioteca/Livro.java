@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import lp2g37.biblioteca.EmprestadoPara;
+
 public class Livro implements Serializable{
     private static final long serialVersionUID = 1L;
     String titulo, categoria;
@@ -59,5 +61,22 @@ public class Livro implements Serializable{
     public void addUsuarioHist(GregorianCalendar emp, GregorianCalendar dev, int cod){
         EmprestadoPara empr = new EmprestadoPara(emp, dev, cod);
         Historico.add(empr);
+    }
+
+    public void imprimeHist(){
+        EmprestadoPara emp;
+        System.out.println("Historico de emprestimos de "+titulo);
+        System.out.println("---------------------");
+        System.out.println("Usuario Emprestimo Devolucao");
+        System.out.println("---------------------");
+        for(int i=0; i<Historico.size();i++){
+            emp = Historico.get(i);
+            System.out.println(emp.imprime());
+        }
+    }
+
+    public void consulta(){
+        System.out.println("--------------------\n"+titulo+"\n--------------------\nCodigo: "+codigo+"\nCategoria: "+categoria+"\nQuantidade: "+quantidade+"\nEmprestados: "+emprestados+"\n\n");
+        imprimeHist();
     }
 }
