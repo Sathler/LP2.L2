@@ -1,8 +1,10 @@
 package lp2g37.biblioteca;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Emprestimo{
+public class Emprestimo implements Serializable{
+    private static final long serialVersionUID = 1L;
     GregorianCalendar emprestimo, devolucao;
     int codigo;
 
@@ -14,5 +16,9 @@ public class Emprestimo{
 
     public int getCodigo(){
         return codigo;
+    }
+
+    public String imprime(){
+        return codigo+"   "+Converte.imprimeGCalendar(emprestimo)+"   "+Converte.imprimeGCalendar(devolucao);
     }
 }

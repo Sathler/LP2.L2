@@ -1,8 +1,10 @@
 package lp2g37.biblioteca;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class EmprestadoPara{
+public class EmprestadoPara implements Serializable{
+    private static final long serialVersionUID = 1L;
     GregorianCalendar emprestimo, devolucao;
     int codigoUsuario;
 

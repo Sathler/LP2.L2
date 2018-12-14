@@ -15,4 +15,10 @@ public class Converte{
             throw new StringInvalidaEx("Escreva uma data valida para continuar.");
         }
     }
+
+    public static String imprimeGCalendar(GregorianCalendar cal){
+        String txt;
+        txt = cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.YEAR);
+        return txt;
+    }
 }

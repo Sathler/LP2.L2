@@ -44,4 +44,16 @@ public class Usuario extends Pessoa implements Serializable{
         Emprestimo emp = new Emprestimo(loc, dev, cod);
         Historico.add(emp);
     }
+
+    public void imprimeHist(){
+        Emprestimo emp;
+        System.out.println("Historico de emprestimos de "+nome);
+        System.out.println("---------------------");
+        System.out.println("Livro Emprestimo Devolucao");
+        System.out.println("---------------------");
+        for(int i=0; i<Historico.size();i++){
+            emp = Historico.get(i);
+            System.out.println(emp.imprime());
+        }
+    }
 }
