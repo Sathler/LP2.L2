@@ -1,3 +1,5 @@
+package lp2g37.biblioteca;
+
 public class UsuarioNaoCadastradoEx extends Exception{
     String msg;
 

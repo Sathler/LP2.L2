@@ -1,3 +1,5 @@
+package lp2g37.biblioteca;
+
 public class NenhumaCopiaEmprestadaEx extends Exception{
     String msg;
 

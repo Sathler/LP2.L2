@@ -1,8 +1,10 @@
+package lp2g37.biblioteca;
+
 import java.io.*;
 import java.util.*;
 
 public class Biblioteca{
-    Hashtable Usuarios, Livros;
+    public Hashtable Usuarios, Livros;
 
     public Biblioteca(){
         this.Usuarios = new Hashtable<Integer, Usuario>();
@@ -10,13 +12,17 @@ public class Biblioteca{
     }
 
     public Biblioteca(String users, String books){
+        Hashtable hu = new Hashtable<Integer, Usuario>();
+        Hashtable hl = new Hashtable<Integer, Livro>();
         try{
             FileInputStream f = new FileInputStream(users);
             ObjectInputStream o = new ObjectInputStream(f);
-            Usuarios = (Hashtable)o.readObject();
+            hu = (Hashtable)o.readObject();
+            this.Usuarios = hu;
             f = new FileInputStream(books);
             o = new ObjectInputStream(f);
-            Livros = (Hashtable)o.readObject();
+            hl = (Hashtable)o.readObject();
+            this.Livros = hl;
             o.close();
             f.close();
         }
