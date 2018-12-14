@@ -1,4 +1,5 @@
 #!/bin/bash
+export CLASSPATH=./app:./lib
 condicao=1
 while [ "$condicao"="1" ];
  do

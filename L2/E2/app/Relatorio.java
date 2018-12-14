@@ -18,7 +18,12 @@ public class Relatorio{
                 System.out.println("3 - Consultar usuario.");
                 System.out.println("4 - Consultar Livro.");
                 System.out.println("5 - Sair.");
-                opt = Integer.parseInt(inData.readLine());
+                try{
+                    opt = Integer.parseInt(inData.readLine());
+                }
+                catch(NumberFormatException e){
+                    opt = 6;
+                }
                 if(opt == 1){
                     System.out.println(biblioteca.imprimeUsuarios());
                 }
@@ -33,7 +38,10 @@ public class Relatorio{
                         user.consulta();
                     }
                     catch(UsuarioNaoCadastradoEx e){
-                        System.out.println(e);
+                        System.out.println("Usuario nao existe");
+                    }
+                    catch(NumberFormatException e){
+                        System.out.println("Codigo Invalido.");
                     }
                 }
                 else if(opt == 4){
@@ -44,7 +52,10 @@ public class Relatorio{
                         book.consulta();
                     }
                     catch(LivroNaoCadastradoEx e){
-                        System.out.println(e);
+                        System.out.println("Livro nao existe.");
+                    }
+                    catch(NumberFormatException e){
+                        System.out.println("Codigo Invalido. ");
                     }
                 }
                 else if(opt == 5){

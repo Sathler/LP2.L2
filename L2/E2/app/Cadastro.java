@@ -21,7 +21,12 @@ public class Cadastro{
             System.out.println("3 - Salvar em arquivo. ");
             System.out.println("4 - Sair.");
             try{
-                opt = Integer.parseInt(inData.readLine());
+                try{
+                    opt = Integer.parseInt(inData.readLine());
+                }
+                catch(NumberFormatException e){
+                    opt = 5;
+                }
                 if(opt == 1){
                     System.out.println("Cadastro de usuario.");
                     System.out.println("---------------------");
@@ -41,7 +46,25 @@ public class Cadastro{
                         }
                     }
                     System.out.println("Digite o codigo: ");
-                    codigo = Integer.parseInt(inData.readLine());
+                    while(true){
+                        try{
+                            codigo = Integer.parseInt(inData.readLine());
+                            if(codigo <= 0){
+                                System.out.println("Codigo deve ser um valor inteiro positivo.");
+                            }
+                            else{
+                                if(!biblioteca.Usuarios.containsKey(codigo)){
+                                    break;
+                                }
+                                else{
+                                    System.out.println("Codigo ja cadastrado.");
+                                }
+                            }
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("Codigo deve ser um valor inteiro positivo.");
+                        }
+                    }
                     user = new Usuario(endereco, codigo, nome, nascg);
                     biblioteca.cadastraUsuario(user);
                     
@@ -54,9 +77,40 @@ public class Cadastro{
                     System.out.println("Digite a categoria: ");
                     categoria = inData.readLine();
                     System.out.println("Digite a quantidade: ");
-                    qntd = Integer.parseInt(inData.readLine());
+                    while(true){
+                        try{
+                            qntd = Integer.parseInt(inData.readLine());
+                            if(qntd <= 0){
+                                System.out.println("Valor deve ser um inteiro maior do que zero");
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("Valor deve ser um inteiro maior do que zero.");
+                        }
+                    }
                     System.out.println("Digite o codigo: ");
-                    codigo = Integer.parseInt(inData.readLine());
+                    while(true){
+                        try{
+                            codigo = Integer.parseInt(inData.readLine());
+                            if(codigo <= 0){
+                                System.out.println("Codigo deve ser um valor inteiro positivo.");
+                            }
+                            else{
+                                if(!biblioteca.Livros.containsKey(codigo)){
+                                    break;
+                                }
+                                else{
+                                    System.out.println("Esse codigo ja foi cadastrado.");
+                                }
+                            }
+                        }
+                        catch(NumberFormatException e){
+                            System.out.println("Codigo deve ser um valor inteiro positivo.");
+                        }
+                    }
                     book = new Livro(codigo, nome, categoria, qntd);
                     biblioteca.cadastraLivro(book);
                 }
@@ -68,7 +122,12 @@ public class Cadastro{
                         System.out.println("2 - Livros.");
                         System.out.println("3 - Voltar.");
                         System.out.println("---------------------");
-                        opt = Integer.parseInt(inData.readLine());
+                        try{
+                            opt = Integer.parseInt(inData.readLine());
+                        }
+                        catch(NumberFormatException e){
+                            opt = 4;
+                        }
                         if(opt == 1){
                             biblioteca.salvaArquivo("users.tmp", biblioteca.Usuarios);
                             System.out.println("arquivo salvo com sucesso.");
@@ -93,9 +152,6 @@ public class Cadastro{
                 }
             }
             catch(IOException e){
-                System.out.println(e);
-            }
-            catch(NumberFormatException e){
                 System.out.println(e);
             }
         }

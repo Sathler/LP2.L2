@@ -71,7 +71,7 @@ public class Biblioteca{
             book.addUsuarioHist(today, deadline, user.codigoUsuario);
         }
         catch(CopiaNaoDisponivelEx e){
-            System.out.println(e);
+            System.out.println("Copia nao disponivel");
         }
     }
 
@@ -99,7 +99,7 @@ public class Biblioteca{
                 }
             }
             catch(NenhumaCopiaEmprestadaEx e){
-                System.out.println(e);
+                System.out.println("Nenhuma copia emprestada.");
             }
         }
         else{
