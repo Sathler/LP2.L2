@@ -27,12 +27,23 @@ public class MyApplet extends JApplet implements ActionListener{
     // #####################################################################
 
     MinhaListaOrdenavel lista = new MinhaListaOrdenavel();
+    
     PessoaIMC pessoa;
     int opt;
     ArrayList<PessoaIMC> ordenado;
     final String regex = "^\\d{2}\\/{1}\\d{2}\\/{1}\\d{4}$";
     
     public void init(){
+        lista.add(new Homem("Vinicius", "27/03/1992" , 100, 1.80));
+        lista.add(new Homem("Alberto", "14/04/1989", 75, 1.65));
+        lista.add(new Homem("Gilberto", "13/05/1990", 70, 1.85));
+        lista.add(new Homem("Gustavo", "02/06/1998", 90, 1.60));
+        lista.add(new Homem("Leonardo", "30/07/1991", 80, 1.95));
+        lista.add(new Mulher("Carlota", "22/08/1997", 60, 1.75));
+        lista.add(new Mulher("Elizabeth", "15/09/1994", 65, 1.55));
+        lista.add(new Mulher("Ingrid", "19/10/1993", 95, 2.00));
+        lista.add(new Mulher("Jessica", "07/11/1970", 55, 1.70));
+        lista.add(new Mulher("Marcela", "02/12/1985", 85, 1.90));
         genderG = new ButtonGroup();
         genderP = new JPanel();
         homem = new JRadioButton("Homem");
@@ -111,7 +122,7 @@ public class MyApplet extends JApplet implements ActionListener{
                     throw new NoGenderException("");
                 }
                 listagem.setText("");
-                ordenado = lista.Ordena(ordenacao.getSelectedIndex());
+                ordenado = lista.Ordena(ordenacao.getSelectedIndex()+1);
                 for(int i=0; i<ordenado.size(); i++){
                     listagem.append(ordenado.get(i).toString());
                     listagem.append("-------------------\n");
